@@ -16,7 +16,7 @@ const Gist = ({gist}) => {
 
   return (
     <section className='gist'>
-      <h2 className='title'>{gist.description || `gist:${gist.id}}`}</h2>
+      <h2 className='title'>{gist.description || `gist:${gist.id}`}</h2>
       {Object.keys(gist.files).length > 0 ?
         <div className='languages'>
           {
