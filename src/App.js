@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.scss';
 import axios from 'axios';
 import Search from './components/search/Search';
@@ -9,6 +9,19 @@ function App() {
   const [gists, setGists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    //const urlParams = new URLSearchParams(window.location.search);
+    //const queryParam = urlParams.get('q');
+    // if (queryParam) {
+    //   handleClick(queryParam);
+    // }
+    let hash = window.location.hash.substr(2);
+    if (hash) {
+      handleClick(hash);
+    }
+  }, []);
 
   const handleClick = (user) => {
     if (user) {
@@ -26,6 +39,8 @@ function App() {
         } else {
           setGists(result.data);
         }
+        window.location.href = `/#/${user}`;
+        setQuery(user);
       }).catch(error => {
         if (error.response.status === 404) {
           setError('GitHub user not found.');
@@ -60,7 +75,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Search handleClick={handleClick} disabled={isLoading}/>
+      <Search handleClick={handleClick} initialValue={query} disabled={isLoading}/>
       {render()}
     </div>
   );

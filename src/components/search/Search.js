@@ -1,7 +1,7 @@
 import React, {createRef, useEffect} from 'react';
 import './Search.scss';
 
-const Search = ({handleClick, ...props}) => {
+const Search = ({handleClick, initialValue, ...props}) => {
   const inputRef = createRef();
 
   const pressEnter = (e) => {
@@ -15,14 +15,14 @@ const Search = ({handleClick, ...props}) => {
     return () => {
       document.removeEventListener('keydown', pressEnter, false);
     }
-  })
+  });
 
   return (
     <div className='search'>
-      <input className='input' ref={inputRef} type='search' placeholder='Type user'/>
-      <button className='btn' type='button' onClick={() => handleClick(inputRef.current.value)} {...props}>Search
+      <input ref={inputRef} className='input' defaultValue={initialValue} type='search' placeholder='Type user'/>
+      <button className='btn' type='button' onClick={() => handleClick(inputRef.current.value)} {...props}>
+        Search
       </button>
-      <br/>
     </div>
   )
 }
