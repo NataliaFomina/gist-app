@@ -12,7 +12,6 @@ const Search = ({handleClick, ...props}) => {
 
   useEffect(() => {
     document.addEventListener('keydown', pressEnter, false);
-
     return () => {
       document.removeEventListener('keydown', pressEnter, false);
     }

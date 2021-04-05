@@ -32,7 +32,7 @@ const Gist = ({gist}) => {
           {
             forks.map((fork, index) => (
               <div className='fork' key={index}>
-                <img className='fork-img' src={fork.owner.avatar_url} height={'30px'}/>
+                <img className='fork-img' src={fork.owner.avatar_url} alt="User avatar"/>
                 <p className='fork-owner'>{fork.owner.login}</p>
               </div>
             ))
