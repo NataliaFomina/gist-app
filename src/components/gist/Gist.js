@@ -7,8 +7,7 @@ const Gist = ({gist}) => {
   const [forks, setForks] = useState([]);
 
   useEffect(() => {
-    axios.get('https://api.github.com/gists/68f8d502be42d5cd4942/forks', {
-      //axios.get(gist.forks_url, {
+    axios.get(gist.forks_url, {
       headers: headers()
     }).then(result => {
       setForks(result.data.slice(1).slice(-3));
