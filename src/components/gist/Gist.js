@@ -12,7 +12,7 @@ const Gist = ({gist}) => {
     }).then(result => {
       setForks(result.data.slice(1).slice(-3));
     });
-  }, [])
+  }, [gist]);
 
   return (
     <section className='gist'>
