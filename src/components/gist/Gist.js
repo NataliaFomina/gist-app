@@ -29,16 +29,23 @@ const Gist = ({gist}) => {
       {forks.length > 0 ?
         <div className='forks'>
           {
-            forks.map((fork, index) => (
-              <div className='fork' key={index}>
-                <img className='fork-img' src={fork.owner.avatar_url} alt="User avatar"/>
-                <p className='fork-owner'>{fork.owner.login}</p>
-              </div>
-            ))
+            forks.map((fork, index) => {
+              if (fork.owner) {
+                return (
+                  <div className='fork' key={index}>
+                    <img className='fork-img' src={fork.owner.avatar_url} alt="User avatar"/> :
+                    <p className='fork-owner'>{fork.owner.login}</p>
+                  </div>
+                )
+              } else {
+                return null;
+              }
+            })
           }
         </div> : null
       }
     </section>
   )
 }
+
 export default Gist;
