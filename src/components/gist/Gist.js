@@ -33,7 +33,7 @@ const Gist = ({gist}) => {
               if (fork.owner) {
                 return (
                   <div className='fork' key={index}>
-                    <img className='fork-img' src={fork.owner.avatar_url} alt="User avatar"/> :
+                    <img className='fork-img' src={fork.owner.avatar_url} alt="User avatar"/>
                     <p className='fork-owner'>{fork.owner.login}</p>
                   </div>
                 )
